@@ -9,8 +9,7 @@
                 <div>
                     <h4 class="fs-0-92"> <i class="fa fa-calendar fs-1"></i> Event Date and Time</h4>
                 </div>
-                <span class="fs-0-92">{{eventDetailItem?.startDate}} {{ eventDetailItem?.startTime}} -
-                    {{eventDetailItem?.endDate}} {{eventDetailItem?.endTime}}</span>
+                <span class="fs-0-92">{{eStart}} - {{eEnd}}</span>
             </div>
             <button type="button" *ngIf="isEnrolled" class="sb-btn sb-btn-primary sb-btn-normal mt-20 ml-auto" (click)="isEnrollEvent();">Enroll</button>
             <button type="button" *ngIf="!isEnrolled" class="sb-btn sb-btn-primary sb-btn-normal mt-20 ml-auto" (click)="isEnrollEvent();">Unenroll</button>
