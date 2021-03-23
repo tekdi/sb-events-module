@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import{ labelMessages } from './../labels'
 @Component({
   selector: 'sb-advance-event-detail',
   templateUrl: './advance-event-detail.component.html',
@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AdvanceEventDetailComponent implements OnInit {
   @Input() eventDetailItem: any;
+  labelMessages= labelMessages;
   isTruncate : boolean = false;
   constructor() { }
 

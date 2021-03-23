@@ -1,0 +1,406 @@
+{
+    "id": "api.form.read",
+    "params": {
+        "resmsgid": "21e6f3da-8a7c-44cc-a6c0-4703dcc60927",
+        "msgid": "cfe90415-9aff-439f-b580-170b9189db85",
+        "status": "successful"
+    },
+    "responseCode": "OK",
+    "result": {
+        "form": {
+            "type": "content",
+            "subtype": "textbook",
+            "action": "create",
+            "component": "*",
+            "framework": "tn_k-12_5",
+            "data": {
+                "templateName": "defaultTemplate",
+                "action": "create",
+                "fields": [
+                    {
+                        "code": "name",
+                        "dataType": "text",
+                        "name": "Name",
+                        "label": "Event Name",
+                        "description": "Event Name",
+                        "editable": true,
+                        "placeholder": "Event Name",
+                        "inputType": "text",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                                "type": "regex",
+                                "value": "^[a-zA-Z0-9 &]*$",
+                                "message": "Invalid Input"
+                            },
+                            {
+                                "type": "required",
+                                "value": "80",
+                                "message": "Enter Event Name"
+                            }
+                        ]
+                    },
+                    {
+                        "code": "description",
+                        "dataType": "text",
+                        "name": "Description",
+                        "label": "Description",
+                        "description": "Event Description",
+                        "editable": true,
+                        "placeholder": "Description",
+                        "inputType": "textarea",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    },
+                    {
+                        "code": "category",
+                        "dataType": "text",
+                        "name": "Category",
+                        "label": "Category",
+                        "description": "Category of the event to use to teach",
+                        "editable": true,
+                        "placeholder": "Select Event Category",
+                        "inputType": "select",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "range": ["Sport", "Automobiles", "Technology"],
+                        "renderingHints": {
+                            "semanticColumnWidth": "six"
+                        },
+                        "index": 4
+                    },
+                    {
+                        "code": "evenType",
+                        "dataType": "text",
+                        "name": "Event Type",
+                        "label": "Event Type",
+                        "description": "Type of the event",
+                        "editable": true,
+                        "placeholder": "Select Event Type",
+                        "inputType": "select",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "range": ["Online", "Offline"],
+                        "renderingHints": {
+                            "semanticColumnWidth": "six"
+                        },
+                        "index": 4
+                    }, {
+                        "code": "onlineProvider",
+                        "dataType": "text",
+                        "name": "Online Provider",
+                        "label": "Online Provider",
+                        "description": "Online Provider",
+                        "editable": true,
+                        "placeholder": "E.g Zoome",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    }, {
+                        "code": "onlineProviderData",
+                        "dataType": "text",
+                        "name": "Online Provider Data",
+                        "label": "Online Provider Data",
+                        "description": "Online Provider Data",
+                        "editable": true,
+                        "placeholder": "<meetingLink>",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    }, {
+                        "code": "venue",
+                        "dataType": "text",
+                        "name": "Venue",
+                        "label": "Venue",
+                        "description": "Venue",
+                        "editable": true,
+                        "placeholder": "Venue",
+                        "inputType": "textarea",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    }, {
+                        "code": "visibility",
+                        "dataType": "text",
+                        "name": "Visibility",
+                        "label": "Visibility",
+                        "description": "Visibility",
+                        "editable": true,
+                        "placeholder": "Visibility",
+                        "inputType": "checkbox",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    }, {
+                        "code": "audience",
+                        "dataType": "text",
+                        "name": "Audience",
+                        "label": "Audience",
+                        "description": "Audience",
+                        "editable": true,
+                        "placeholder": "Select Audience",
+                        "inputType": "select",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "range": ["Student", "Teacher", "Parents"],
+                        "renderingHints": {
+                            "semanticColumnWidth": "six"
+                        },
+                        "index": 4
+                    }, {
+                        "code": "keywords",
+                        "dataType": "text",
+                        "name": "Keywords",
+                        "label": "Keywords",
+                        "description": "Keywords",
+                        "editable": true,
+                        "placeholder": "Keywords",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    },
+                    {
+                        "code": "dialcodes",
+                        "dataType": "text",
+                        "name": "Dialcodes",
+                        "label": "Dialcodes",
+                        "description": "Dialcodes",
+                        "editable": true,
+                        "placeholder": "Publisher",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "six"
+                        },
+                        "index": 6,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9]*$",
+                            "message": "Invalid Input"
+                        }]
+                    },
+                    {
+                        "code": "createdFor",
+                        "dataType": "text",
+                        "name": "createdFor",
+                        "label": "Created For",
+                        "description": "Created For",
+                        "editable": true,
+                        "placeholder": "Created For",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    },
+                    {
+                        "code": "source",
+                        "dataType": "text",
+                        "name": "source",
+                        "label": "Source",
+                        "description": "Source",
+                        "editable": true,
+                        "placeholder": "Source",
+                        "inputType": "text",
+                        "required": false,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": [{
+                            "type": "regex",
+                            "value": "^[a-zA-Z0-9 &]*$",
+                            "message": "Invalid Input"
+                        }]
+                    },  {
+                        "code": "registrationStartDate",
+                        "dataType": "date",
+                        "name": "Registration Start Date",
+                        "label": "Registration Start Date",
+                        "description": "Registration Start Date",
+                        "editable": true,
+                        "placeholder": "Registration Start Date",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    },
+                    {
+                        "code": "registrationEndDate",
+                        "dataType": "date",
+                        "name": "Registration End Date",
+                        "label": "Registration End Date",
+                        "description": "Registration End Date",
+                        "editable": true,
+                        "placeholder": "Registration End Date",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    },
+                    {
+                        "code": "startDate",
+                        "dataType": "date",
+                        "name": "Event Start Date",
+                        "label": "Event Start Date",
+                        "description": "Event Start Date",
+                        "editable": true,
+                        "placeholder": "Event Start Date",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    },
+                    {
+                        "code": "startTime",
+                        "dataType": "time",
+                        "name": "Event Start Time",
+                        "label": "Event Start Time",
+                        "description": "Event Start Time",
+                        "editable": true,
+                        "placeholder": "Event Start Time",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    },
+                    {
+                        "code": "endDate",
+                        "dataType": "date",
+                        "name": "Event End Date",
+                        "label": "Event End Date",
+                        "description": "Event End Date",
+                        "editable": true,
+                        "placeholder": "Event End Date",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    },
+                    {
+                        "code": "endTime",
+                        "dataType": "time",
+                        "name": "Event End Time",
+                        "label": "Event End Time",
+                        "description": "Event End Time",
+                        "editable": true,
+                        "placeholder": "Event End Time",
+                        "inputType": "date",
+                        "required": true,
+                        "displayProperty": "Editable",
+                        "visible": true,
+                        "renderingHints": {
+                            "semanticColumnWidth": "twelve"
+                        },
+                        "index": 1,
+                        "validations": []
+                    }
+                ]
+            },
+            "created_on": "2020-11-12T07:02:44.056Z",
+            "last_modified_on": "2020-11-12T07:02:59.202Z",
+            "rootOrgId": "01269878797503692810"
+        }
+    },
+    "ts": "2021-02-17T05:33:12.609Z",
+    "ver": "1.0"
+}

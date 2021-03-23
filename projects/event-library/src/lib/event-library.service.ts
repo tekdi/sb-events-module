@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional, Inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventModuleService {
-
-  constructor() { }
+  apiUrlConfig : any;
+  constructor( @Optional() @Inject("urlConfig") public config: any) {
+    this.apiUrlConfig = config.urlConfig;
+  }
 }

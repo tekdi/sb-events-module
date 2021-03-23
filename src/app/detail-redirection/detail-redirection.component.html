@@ -1,0 +1,4 @@
+<sb-cover-event-detail  *ngIf="ViewPage=='detail'" [userData]="userData" [eventDetailItem]="eventItem"  (retireEventId)="retire($event)"></sb-cover-event-detail>
+<sb-join-event-button  *ngIf="ViewPage=='detail'" [eventDetailItem]="eventItem"></sb-join-event-button>
+<sb-advance-event-detail *ngIf="ViewPage=='detail'" [eventDetailItem]="eventItem"></sb-advance-event-detail>
+<sb-event-create *ngIf="formFieldProperties && ViewPage=='form'" [formFieldProperties]="formFieldProperties"></sb-event-create>

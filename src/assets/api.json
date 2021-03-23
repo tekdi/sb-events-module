@@ -1,0 +1,27 @@
+{
+  "err_msg": "",
+  "err_code": "",
+  "response_id": "602a060abdbdd",
+  "api": "jticket.geteventdetails",
+  "version": "",
+  "data": {
+      "result": [
+          {
+              "id": 76,
+              "title": "Philadelphia Car Show 2021",
+              "description": "Don't miss this chance to watch all your favourite car brands under one roof with the Philadelphia Car Show 2018. Philadelphia Car Show 2018 will feature some classic sports cars, SUV's,sedans, luxury cars and much more! You can also get to interact with the various representatives associated",
+              "book_start_date": "",
+              "book_end_date": "",
+              "startdate": "Wednesday, 1st September 2021",
+              "enddate": "Wednesday, 8th September 2021",
+              "avatar": "https://jticketingdemo.techjoomla.com/media/com_jticketing/events/images/L_2019011605360101.jpg",
+              "integrid": 72,
+              "location": "1101 Arch Street, Philadelphia, PA, United States",
+              "checkin": "2",
+              "totaltickets": 9,
+              "soldtickets": 0
+          }
+      ],
+      "empty_message": ""
+  }
+}

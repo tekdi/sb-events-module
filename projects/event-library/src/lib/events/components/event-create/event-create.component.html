@@ -1,20 +1,95 @@
-<div class="p-24">
-    <ng-container *ngIf="formFieldProperties">
-        <sb-dynamic-form class="label-1" [config]="formFieldProperties" (valueChanges)="valueChanges($event)"></sb-dynamic-form>
+<div class="p-40">
+
+    <h1 class="mt-20 mb-20">{{labelMessages.lbl.createnewevent}}</h1>
+    <ng-container *ngIf="isNew;then New; else Edit">
     </ng-container>
+    <ng-template #New>
+        <sb-dynamic-form *ngIf="formFieldProperties" class="label-1" [config]="formFieldProperties" (valueChanges)="valueChanges($event)">
+        </sb-dynamic-form>
+    </ng-template>
+    <ng-template #Edit>
+        <sb-dynamic-form *ngIf="formFieldData" class="label-1" [config]="formFieldData" (valueChanges)="valueChanges($event)">
+        </sb-dynamic-form>
+    </ng-template>
 
-    <div class="mb-12">
-        <div class="font-weight-bold">Start Date & Time : </div>
-        <input class="fsmall text-uppercase py-8 w-100 px-16" [(ngModel)]="startDate" type="datetime-local" id="meeting-time" name="meeting-time" min="2020-06-07T00:00">
+    <form class="ui form" [formGroup]="customFields">
+        <div class="form-group">
+            <div class="d-flex flex-jc-space-between">
+                <div class="mb-12 w-100">
+                    <label class="mb-5 fs-0-785">{{labelMessages.lbl.startdatetime}}
+                    </label>
+                    <div class="field">
+                        <input class="fsmall sb-textbox text-uppercase py-8 w-85 px-16" formControlName="startDate" type="date" id="meeting-time" name="meeting-time" min="{{todayDate}}">
+                        <input class="fsmall sb-textbox text-uppercase py-8 px-16" formControlName="startTime" type="time" id="meeting-time" name="meeting-time">
+                
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['startDate'].errors && customFields.controls['startDate'].errors.required">
+                            Title is required
+                        </div>
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['startDate'].errors && customFields.controls['startDate'].errors.maxlength">
+                            Title length should not exceed 150 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-12 w-100 ml-16">
+                    <label class="mb-5 fs-0-785">{{labelMessages.lbl.enddatetime}}
+                    </label>
+                    <div class="field">
+                        <input class="fsmall sb-textbox text-uppercase py-8 w-85 px-16" formControlName="endDate" type="date" id="meeting-time" name="meeting-time" min="{{todayDate}}">
+                        <input class="fsmall sb-textbox text-uppercase py-8 px-16" formControlName="endTime" type="time" id="meeting-time" name="meeting-time">
+                
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['endDate'].errors && customFields.controls['endDate'].errors.required">
+                            Title is required
+                        </div>
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['endDate'].errors && customFields.controls['endDate'].errors.maxlength">
+                            Title length should not exceed 150 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-jc-space-between">
+                <div class="mb-12 w-100">
+                    <label class="mb-5 fs-0-785">{{labelMessages.lbl.registrationstartdate}}
+                    </label>
+                    <div class="field">
+                        <input class="fsmall sb-textbox text-uppercase py-8 w-85 px-16" formControlName="registrationStartDate" type="date" id="meeting-time" name="meeting-time" min="{{todayDate}}">
+
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['registrationStartDate'].errors && customFields.controls['registrationStartDate'].errors.required">
+                            Title is required
+                        </div>
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['registrationStartDate'].errors && customFields.controls['registrationStartDate'].errors.maxlength">
+                            Title length should not exceed 150 characters
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-12 w-100 ml-16">
+                    <label class="mb-5 fs-0-785">{{labelMessages.lbl.registrationenddate}}
+                    </label>
+                    <div class="field">
+                        <input class="fsmall sb-textbox text-uppercase py-8 w-85 px-16" formControlName="registrationEndDate" type="date" id="meeting-time" name="meeting-time" min="{{todayDate}}">
+
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['registrationEndDate'].errors && customFields.controls['registrationEndDate'].errors.required">
+                            Title is required
+                        </div>
+                        <div class="ui pointing error basic label below"
+                            *ngIf="isSubmitted && customFields.controls['registrationEndDate'].errors && customFields.controls['registrationEndDate'].errors.maxlength">
+                            Title length should not exceed 150 characters
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="d-flex my-24 flex-jc-flex-end">
+        <button type="button" class="sb-btn sb-btn-outline-primary sb-btn-md ripple  fs-1" (click)="Cancel();">Cancel</button>
+
+        <button type="button" class="sb-btn sb-btn-primary sb-btn-md ripple ml-12 fs-1" (click)="postData(identifier);">Save</button>
     </div>
-
-    <div class="mb-12">
-        <div class="font-weight-bold">End Date & Time :</div>
-        <input class="fsmall text-uppercase py-8 w-100 px-16 " [(ngModel)]="endDate" type="datetime-local" id="meeting-time" name="meeting-time" min="2020-06-07T00:00">
-    </div>
-
-    <div class="d-flex mb-12">
-        <button type="button" class="sb-btn sb-btn-primary sb-btn-normal ripple ml-auto" (click)="postData();">Submit</button>
-    </div>
-
 </div>

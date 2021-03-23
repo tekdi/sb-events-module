@@ -1,0 +1,61 @@
+{
+          "templateName": "",
+          "required": [],
+          "properties": [
+            {
+              "code": "Category",
+              "dataType": "list",
+              "description": "Type",
+              "range":["course", "session", "practicals"],
+              "editable": true,
+              "default": [],
+              "renderingHints": {
+                "class": "sb-g-col-lg-1"
+              },
+              "inputType": "nestedselect",
+              "label": "Event Category(s)",
+              "name": "Type",
+              "placeholder": "Select Event Category",
+              "required": false,
+              "visible": true
+            },
+            {
+              "code": "Name",
+              "visible": true,
+              "depends": [],
+              "editable": true,
+              "dataType": "list",
+              "range":["Name 1", "Name 2", "Name 3"],
+              "renderingHints": {
+                "class": "sb-g-col-lg-1"
+              },
+              "description": "Name",
+              "label": "Name",
+              "required": false,
+              "name": "Name",
+              "inputType": "nestedselect",
+              "placeholder": "Select Name",
+              "output": "name"
+            },
+            {
+              "code": "Type",
+              "visible": true,
+              "depends": [
+                "board"
+              ],
+              "editable": true,
+              "dataType": "list",
+              "range":["live", "online", "offlie"],
+              "renderingHints": {
+                "class": "sb-g-col-lg-1"
+              },
+              "description": "",
+              "label": "Type(s)",
+              "required": false,
+              "name": "Type",
+              "inputType": "nestedselect",
+              "placeholder": "Select Type",
+              "output": "name"
+            }
+          ]
+        }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewEncapsulation } from '@angular/core';
+import{ labelMessages } from './../labels'
 
 @Component({
   selector: 'sb-event-filter',
@@ -7,6 +8,8 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewEncapsul
   encapsulation: ViewEncapsulation.None
 })
 export class EventFilterComponent implements OnInit, OnChanges {
+
+  labelMessages = labelMessages;
   @Input() filterValues: any;
   @Input() filterOpenStatus: boolean;
   @Output() filterChangeEvent: EventEmitter<any> = new EventEmitter();
@@ -23,7 +26,8 @@ export class EventFilterComponent implements OnInit, OnChanges {
     ngOnChanges() {
       this.isFilterShow = this.filterOpenStatus;
     }
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+  }
 
   initializeForm() { }
 
@@ -50,7 +54,6 @@ export class EventFilterComponent implements OnInit, OnChanges {
       filtersSelected: this.filterSelectedValues,
       query: this.searchQuery
     });
-    console.log('event', this.filterSelectedValues);
   }
 
   outputData($event) { }

@@ -7,12 +7,12 @@
             <input class="sb-search-input " [(ngModel)]="searchQuery" type="text" (keyup.enter)="onQueryEnter();" placeholder="Search Event"/>
           </div>
           <button class="sb-btn sb-btn-normal">
-            Search
+            {{labelMessages.lbl.search}}
           </button>
         </div>
 
         <div class="fs-0-785 cursor-pointer" (click)="showfilter()">
-          Change Filters
+          {{labelMessages.lbl.changefilters}}
           <i *ngIf="isFilterShow" class="caret up icon"></i>
           <i *ngIf="!isFilterShow" class="caret down icon"></i>
         </div>
@@ -24,8 +24,8 @@
             (statusChanges)="onStatusChanges($event)" (valueChanges)="valueChanges($event)"></sb-dynamic-form>
         </ng-container>
         <div class="d-flex flex-as-center pt-10 sb-btn-cover flex-jc-space-end">
-          <button type="button" class="sb-btn sb-btn-normal sb-btn-outline-primary ml-5" (click)="resetFilter();">Reset</button>
-          <button type="button" class="sb-btn sb-btn-normal sb-btn-primary ml-15" (click)="applyFilter();">Apply</button>
+          <button type="button" class="sb-btn sb-btn-normal sb-btn-outline-primary ml-5" (click)="resetFilter();">{{labelMessages.lbl.reset}}</button>
+          <button type="button" class="sb-btn sb-btn-normal sb-btn-primary ml-15" (click)="applyFilter();">{{labelMessages.lbl.apply}}</button>
         </div>
       </div>
     </div>

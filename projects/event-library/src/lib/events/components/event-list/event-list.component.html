@@ -1,12 +1,9 @@
 
 <div class =" sbt-page-content-area">
-    <div class="filter-container">
-  <sb-event-filter  [filterValues]="eventFilters" [filterOpenStatus]="filterOpenStatus" (filterChangeEvent)="onFilterChange($event);"></sb-event-filter>
-</div>
   <div class ="card-container">
-  <div class ="masonry-grid ">
-    <div class="masonry-item" *ngFor="let event of filteredEvents">
-         <div class="sb-card" tabindex="0">
+    <div class ="masonry-grid "  *ngIf="filteredEvents">
+      <div class="masonry-item" *ngFor="let event of filteredEvents">
+         <div class="sb-card"  (click)="onEventselect(event.result.content.identifier)" tabindex="0">
             <div class="sb-card-body">
               <div class="sb-card-metas">
                 <div class="sb-card-image mr-16">
@@ -14,29 +11,38 @@
                 </div>
                 <div class="sb-card-meta course">
                     <div *ngIf="event.result.content.contentType" class="sb-card-meta-item ellipsis">
-                       Type: {{event.result.content.contentType}}
+                      {{labelMessages.lbl.type}}: {{event.result.content.contentType}}
                       </div>
                       <div *ngIf="event.result.content.audience" class="sb-card-meta-item ellipsis mt-4">
-                        Audience:  {{event.result.content.audience}}
+                        {{labelMessages.lbl.audience}}:  {{event.result.content.audience}}
                       </div>
                       <div *ngIf="event.result.content.eventType" class="sb-card-meta-item ellipsis mt-4">
-                        Event Type: {{event.result.content.eventType}}
+                        {{labelMessages.lbl.eventtype}}: {{event.result.content.eventType}}
                       </div>
                       <div *ngIf="event.result.content.startDate" class="sb-card-meta-item ellipsis mt-4">
-                        Event Starting On: {{event.result.content.startDate}}
+                         {{labelMessages.lbl.startdate}}: {{event.result.content.startDate}}
                       </div>
                 </div>
               </div>
               <h4 *ngIf="event.result.content.name" class="sb-card-title">
                 {{event.result.content.name}}
               </h4>
-              <div *ngIf="event.result.content.status" class="sb-card-org ellipsis ">
+              <!-- <div *ngIf="event.result.content.status" class="sb-card-org ellipsis ">
                 {{event.result.content.status}} 
-              </div>
+              </div> -->
+              <div class="sb-label-status sb-label-status-success ml-auto mr-15 p-10 mt-8">
+                <span class="sb-label-status-indicator sb-label-status-indicator-success"></span> {{event.result.content.status}} 
+            </div>
             </div>
           </div>
-    
+      </div>
     </div>
- </div>
-</div>
+    <div> 
+      <p *ngIf = "totalPages!=0" >
+        {{labelMessages.lbl.pages}}: 
+        <a [routerLink]="" [class.disabled]="pageNo==0"(click)="getSubmissionList(true,false)"> {{labelMessages.lbl.previous}}</a>|
+        <a [routerLink]="" [class.disabled]="pageNo==totalPages" (click)="getSubmissionList(false,true)"> {{labelMessages.lbl.next}}</a>
+      </p>
+    </div>
+  </div>
 </div>

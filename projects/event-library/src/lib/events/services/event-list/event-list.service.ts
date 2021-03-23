@@ -1,21 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
+import { UserConfigService } from '../userConfig/user-config.service';
+import { DataService } from '../data-request/data-request.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventListService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private userConfigService: UserConfigService,
+    private dataService: DataService) {
+  }
 
-  getEventList(apiUrl) {
-    // return this.http.get<any>('assets/eventlist.json');
-    return this.http.get<any>(apiUrl);
+
+  /**
+   * For get event list 
+   */
+  getEventList() {
+    const req = {
+      url: this.userConfigService.getConfigUrl().eventListApi
+    };
+    return this.dataService.get(req);
   }
 
   getEventFilters() {
-    // return this.http.get<any>(apiUrl);
-    return this.http.get<any>('assets/eventFilter.json'); 
+    return this.http.get<any>('assets/eventFilter.json');
   }
 
 }
