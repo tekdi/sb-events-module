@@ -11,6 +11,7 @@ import { EventModuleService} from './event-library.service';
 import { TimezoneCal } from './events/services/timezone/timezone.service';
 import { DataService } from './events/services/data-request/data-request.service';
 import { SbToastService } from './events/services/iziToast/izitoast.service';
+import { EventService } from "./events/services/event/event.service";
 
 @NgModule({
   declarations: [EventModuleComponent],
@@ -27,7 +28,8 @@ import { SbToastService } from './events/services/iziToast/izitoast.service';
     EventModuleService,
     TimezoneCal,
     DataService,
-    SbToastService
+    SbToastService,
+    EventService
   ]
 })
 export class EventLibraryModule { }
