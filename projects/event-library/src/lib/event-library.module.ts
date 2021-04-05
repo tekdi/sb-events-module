@@ -9,6 +9,7 @@ import { EventDetailService } from './events/services/event-detail/event-detail.
 import { EventCreateService } from './events/services/event-create/event-create.service';
 import { EventModuleService} from './event-library.service';
 import { TimezoneCal } from './events/services/timezone/timezone.service';
+import { DataService } from './events/services/data-request/data-request.service';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TimezoneCal } from './events/services/timezone/timezone.service';
     EventDetailService, 
     EventCreateService,
     EventModuleService,
-    TimezoneCal
+    TimezoneCal,
+    DataService
   ]
 })
 export class EventLibraryModule { }
