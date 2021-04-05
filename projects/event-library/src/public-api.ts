@@ -16,5 +16,9 @@ export * from './lib/events/components/event-create/event-create.component';
 export * from './lib/events/services/event-detail/event-detail.service';
 export * from './lib/events/services/event-create/event-create.service';
 export * from './lib/events/services/event-list/event-list.service';
+export * from './lib/events/services/iziToast/izitoast.service';
 
-
+export * from './lib/events/services/data-request/data-request.service';
+export * from './lib/events/services/timezone/timezone.service';
+export * from './lib/events/services//userConfig/user-config.service';
+export * from './lib/events/services/event/event.service';
