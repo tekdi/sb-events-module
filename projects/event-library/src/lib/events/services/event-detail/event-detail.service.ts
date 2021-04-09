@@ -1,16 +1,42 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { IEventDetailInterface} from '../../interfaces/event-detail.interface';
+import { IEventDetailInterface } from '../../interfaces/event-detail.interface';
+import { UserConfigService } from '../userConfig/user-config.service';
+import { DataService } from '../data-request/data-request.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventDetailService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private userConfigService: UserConfigService,
+    private dataService: DataService) {
+  }
 
-  getEvent(apiUrl) {
-    return this.http.get<IEventDetailInterface.IEventDetail>(apiUrl);
+
+  /**
+   * For get event detail 
+   */
+  getEvent(identifier) {
+    const req = {
+      url: this.userConfigService.getConfigUrl().detail  + identifier
+    };
+
+    return this.dataService.get(req);
+  }
+
+
+  /**
+   * For enroll/unenroll user
+   */
+  enrollUser(cId, uId) {
+    const requestBody = {
+      request: {
+        "courseId": cId,
+        "userId": uId,
+        "fixedBatchId": "event_batch_id"
+      }
+    };
   }
 
 }
