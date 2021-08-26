@@ -14,6 +14,8 @@ export class EventListComponent implements OnInit {
   @Output() eventDetailData = new EventEmitter();
   @Output() redirectToDetail = new EventEmitter();
 
+  public p:any;
+
   @Input() redirection: any = 'event';
   constructor(
     private router: Router,
