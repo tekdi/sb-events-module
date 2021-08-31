@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-
+import{ labelMessages } from './../labels';
 @Component({
   selector: 'sb-event-list',
   templateUrl: './event-list.component.html',
@@ -14,10 +14,11 @@ export class EventListComponent implements OnInit {
   @Output() eventDetailData = new EventEmitter();
   @Output() redirectToDetail = new EventEmitter();
   @Input() myEvents: any;
-
   public p:any;
-
+  
   @Input() redirection: any = 'event';
+  labelMessages = labelMessages;
+  
   constructor(
     private router: Router,
     public translate: TranslateService
@@ -29,7 +30,6 @@ export class EventListComponent implements OnInit {
   }
 
   /*onEventWrapper(identifier) {
-    alert('hiii2');
 
     this.router.navigate([this.redirection], {
       queryParams: {
@@ -38,6 +38,8 @@ export class EventListComponent implements OnInit {
       }
     });
   }*/
+
+  slideConfig = {"slidesToShow": 3, "slidesToScroll": 3};
 
   navToEventDetail(res){
       this.eventDetailData.emit(res);

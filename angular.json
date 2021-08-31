@@ -36,23 +36,26 @@
                             }
                         ],
                         "styles": [
-                           
+                            "node_modules/angular-calendar/css/angular-calendar.css",
                             "node_modules/izitoast/dist/css/iziToast.min.css",
-              "node_modules/@project-sunbird/sb-styles/assets/_styles.scss",
-              "src/assets/lib/semantic/semantic.min.css",
-              "src/assets/styles/styles.scss",
-              "node_modules/font-awesome/css/font-awesome.css",
-              "node_modules/katex/dist/katex.min.css"
-
-
+                            "node_modules/@project-sunbird/sb-styles/assets/_styles.scss",
+                            "src/assets/lib/semantic/semantic.min.css",
+                            "src/assets/styles/styles.scss",
+                            "node_modules/font-awesome/css/font-awesome.css",
+                            "node_modules/katex/dist/katex.min.css",
+                            "projects/event-library/src/lib/assets/styles/style.css",
+                            "node_modules/slick-carousel/slick/slick.scss",
+                            "node_modules/slick-carousel/slick/slick-theme.scss"
                         ],
                         "scripts": ["src/assets/libs/iziToast/iziToast.min.js",
                             "node_modules/jquery/dist/jquery.min.js",
                             "node_modules/katex/dist/katex.min.js",
                             "src/assets/lib/dimmer.min.js",
                             "src/assets/lib/transition.min.js",
-                            "src/assets/lib/modal.min.js"
-                           ]
+                            "src/assets/lib/modal.min.js",
+                            "node_modules/jquery/dist/jquery.min.js",
+                            "node_modules/slick-carousel/slick/slick.min.js"
+                        ]
                     },
                     "configurations": {
                         "production": {

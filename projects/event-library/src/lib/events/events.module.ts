@@ -15,7 +15,16 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { EventCalenderComponent } from './components/event-calender/event-calender.component'; // <-- import the module
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
+
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
     EventDetailComponent, 
@@ -24,7 +33,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     JoinEventComponent,
     AdvanceEventDetailComponent,
     CoverEventDetailComponent,
-    EventFilterComponent
+    EventFilterComponent,
+    EventCalenderComponent
   ],
   imports: [
     CommonModule,
@@ -35,13 +45,20 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NgxIziToastModule,
     HttpClientModule,
     NgxPaginationModule,
+    SlickCarouselModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   exports: [
     EventDetailComponent,
@@ -50,7 +67,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     JoinEventComponent,
     AdvanceEventDetailComponent,
     CoverEventDetailComponent,
-    EventFilterComponent
+    EventFilterComponent,
+    EventCalenderComponent
   ],
   providers: [ ]
 })

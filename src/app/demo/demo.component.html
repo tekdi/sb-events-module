@@ -1,9 +1,9 @@
 <div class="m-20 my-30">
     <a type="button" class="ripple w-16" (click)="Openview('list')">List
         view</a>
-    <a type="button" class=" ripple w-20 ml-16" (click)="Openview('form')">Create
+    <a type="button" class=" ripple  ml-16" (click)="Openview('form')">Create
         Event</a>
-
+    <a type="button" class=" ripple w-20 ml-16" (click)="Openview('calender')">Calender</a>
     <hr />
 </div>
 
@@ -15,7 +15,7 @@
 </div>
 
 <div *ngIf="tab == 'list'">
-    <sb-event-list [list]="eventList" (eventDetailData)="navToEventDetail($event)"></sb-event-list>
+    <sb-event-list [list]="eventList" [myEvents]="myEvents" (eventDetailData)="navToEventDetail($event)"></sb-event-list>
 </div>
 <div *ngIf="tab == 'detail'">
     <sb-cover-event-detail [eventDetailItem]="eventItem" [userData]="userId"></sb-cover-event-detail>
@@ -24,10 +24,12 @@
 </div>
 
 <div *ngIf="tab == 'form'">
-    <sb-event-create *ngIf="!isDetail" [formFieldProperties]="formFieldProperties" [userId]="userId"
-        (closeSaveForm)="cancel($event)" (navAfterSave)="navAfterSave($event);"></sb-event-create>
+    <sb-event-create *ngIf="!isDetail" [formFieldProperties]="formFieldProperties" [userId]="userId" (closeSaveForm)="cancel($event)" (navAfterSave)="navAfterSave($event);"></sb-event-create>
 </div>
 
+<div *ngIf="tab == 'calender'">
+    <sb-event-filter *ngIf="filterConfig" [filterConfig]="filterConfig"></sb-event-filter>
+    <lib-event-calender *ngIf="events" [events]='events'></lib-event-calender>
+    <br /><br /><br />
 
-
-
+</div>
