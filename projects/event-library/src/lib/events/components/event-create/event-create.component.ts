@@ -170,8 +170,9 @@ export class EventCreateComponent implements OnInit {
     }
   }
 
-  Cancel() {
-     this.location.back()
+  Cancel()
+  {
+     this.router.navigate(['/demo']);
   }
 
   /**
