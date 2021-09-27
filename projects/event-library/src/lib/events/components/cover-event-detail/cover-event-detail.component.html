@@ -14,7 +14,7 @@
                 </div>
 
                 <div *ngIf="isOwner">
-                    <button type="button" class="sb-btn sb-btn-outline-primary sb-btn-normal ripple mt-20 mr-12 w-30" (click)="upate(eventDetailItem?.identifier, eventDetailItem?.versionKey);">{{'edit' | translate}}</button>
+                    <button type="button" class="sb-btn sb-btn-outline-primary sb-btn-normal ripple mt-20 mr-12 w-30" (click)="upate(eventDetailItem)">{{'edit' | translate}}</button>
                     <button type="button" class="sb-btn sb-btn-outline-error sb-btn-normal ripple mt-10 mr-12 w-30" (click)="retireEvent(eventDetailItem?.identifier);">{{'retire' | translate}}</button>
 
                     <!-- <button type="button" class="sb-btn sb-btn-primary sb-btn-normal mt-20 mr-12" (click)="upate(eventDetailItem.identifier);">{{'edit' | translate}}</button> -->

@@ -99,8 +99,9 @@ export class DemoComponent implements OnInit {
 
   //
 
-  cancel() {
-    //this.router.navigate(['/home']);
+  cancel()
+  {
+    this.router.navigate(['/home']);
   }
 
   navAfterSave(res) {

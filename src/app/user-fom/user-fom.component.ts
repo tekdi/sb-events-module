@@ -32,7 +32,7 @@ export class UserFomComponent implements OnInit {
   }
   
   cancel(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/demo']);
   }
 
   navAfterSave(res){
@@ -46,11 +46,21 @@ export class UserFomComponent implements OnInit {
       (err: any) => {
         console.log('err = ', err);
       });
-   // this.eventItem = res.result.event;
-   // alert('hi');
   }
 
-
+  getId(res)
+  {
+    this.router.navigate(['/form'], {
+      queryParams: {
+        identifier: res.identifier,
+        versionKey:res.versionKey
+      }
+    });
+    
+    setTimeout(function(){
+      this.window.location.reload();
+    },2000);
+  }
 
 
 }

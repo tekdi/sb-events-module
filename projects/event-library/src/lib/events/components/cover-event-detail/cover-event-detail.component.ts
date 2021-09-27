@@ -29,6 +29,7 @@ export class CoverEventDetailComponent implements OnInit {
     public translate: TranslateService) {
   }
   @Output() retireEventId = new EventEmitter<string>();
+  @Output() EditEventId = new EventEmitter<string>();
 
   ngOnInit() {
     // this.dataService.get({url : 'https://jsonplaceholder.typicode.com/todos/1'}).subscribe(response => 
@@ -51,13 +52,9 @@ export class CoverEventDetailComponent implements OnInit {
     this.eEnd = (this.timezoneCal.calcTime(this.eventDetailItem.endDate, this.eventDetailItem.endTime)).toLocaleString();
   }
 
-  upate(identifier, versionKey) {
-     this.router.navigate(['/event-post'], {
-      queryParams: {
-        identifier: identifier,
-        versionKey: versionKey
-      }
-    });
+  upate(event)
+  {
+    this.EditEventId.emit(event);
   }
   
   retireEvent(identifier: string) {
