@@ -15,6 +15,7 @@
 </div>
 
 <div *ngIf="tab == 'list'">
+    <sb-event-filter (filterSearchData)="getSearchData($event)" (filterChangeEvent)="getFilteredData($event)" *ngIf="filterConfig" [filterConfig]="filterConfig"></sb-event-filter>
     <sb-event-list [list]="eventList" [toSort]=true  [myEvents]="myEvents" (eventDetailData)="navToEventDetail($event)"></sb-event-list>
 </div>
 <div *ngIf="tab == 'detail'">
@@ -28,7 +29,7 @@
 </div>
 
 <div *ngIf="tab == 'calender'">
-    <sb-event-filter *ngIf="filterConfig" [filterConfig]="filterConfig"></sb-event-filter>
+    <sb-event-filter (filterSearchData)="getSearchData($event)" (filterChangeEvent)="getFilteredData($event)" *ngIf="filterConfig" [filterConfig]="filterConfig"></sb-event-filter>
     <lib-event-calender *ngIf="events" [events]='events'></lib-event-calender>
     <br /><br /><br />
 
