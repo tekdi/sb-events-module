@@ -24,7 +24,6 @@ import { MyCalendarEvent } from "projects/event-library/src/lib/events/interface
 export class DemoComponent implements OnInit {
   colors = colors;
   filterConfig: any;
-
   eventList: any;
   eventItem: any;
   tab: string = "list";
@@ -33,8 +32,6 @@ export class DemoComponent implements OnInit {
   isLoading: boolean = true;
   eventCalender: any;
   events: MyCalendarEvent[];
-
-
   p: number = 1;
   collection: any[];
 
@@ -56,7 +53,6 @@ export class DemoComponent implements OnInit {
    */
   showEventListPage() {
     this.eventListService.getEventList().subscribe((data: any) => {
-      console.log("data = ", data.result.content);
       this.eventList = data.result.content;
       this.isLoading = false;
     });
@@ -68,8 +64,6 @@ export class DemoComponent implements OnInit {
   navToEventDetail(res) {
     this.eventItem = res;
     this.tab = "detail";
-
-    console.log(res);
   }
 
   Openview(view)
@@ -93,8 +87,6 @@ export class DemoComponent implements OnInit {
     this.eventCreateService.getEventFormConfig().subscribe((data: any) => {
       this.formFieldProperties = data.result["form"].data.fields;
       this.isLoading = false;
-
-      console.log(data.result["form"].data.fields);
     });
   }
 
@@ -104,7 +96,6 @@ export class DemoComponent implements OnInit {
   }
 
   navAfterSave(res) {
-    //alert(res.result.identifier);
     this.eventDetailService.getEvent(res.result.identifier).subscribe(
       (data: any) => {
         this.eventItem = data.result.event;
@@ -134,9 +125,6 @@ export class DemoComponent implements OnInit {
         owner: obj.owner,
         identifier: "do_11322182566085427211",
       }));
-
-      console.log("after =>", this.events);
-
-    })
+    });
   }
 }

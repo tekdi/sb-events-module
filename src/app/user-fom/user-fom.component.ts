@@ -16,9 +16,7 @@ export class UserFomComponent implements OnInit {
 
   constructor(private eventCreateService: EventCreateService,
     private eventDetailService: EventDetailService ,
-    private router: Router) { 
-
-    }
+    private router: Router) {}
 
   ngOnInit() {
     this.showEventCreatePage();
@@ -36,12 +34,9 @@ export class UserFomComponent implements OnInit {
   }
 
   navAfterSave(res){
-    //  alert(res.result.identifier);
-     this.eventDetailService.getEvent(res.result.identifier).subscribe((data: any) => {
-      this.eventItem = data.result.event;
+    this.eventDetailService.getEvent(res.result.identifier).subscribe((data: any) => {
+    this.eventItem = data.result.event;
     this.isDetail = true;
-
-      console.log(this.eventItem);
     },
       (err: any) => {
         console.log('err = ', err);
@@ -61,6 +56,4 @@ export class UserFomComponent implements OnInit {
       this.window.location.reload();
     },2000);
   }
-
-
 }
