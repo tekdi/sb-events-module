@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { EventListService } from "../../../projects/event-library/src/lib/events/services/event-list/event-list.service";
 import { EventCreateService } from "../../../projects/event-library/src/lib/events/services/event-create/event-create.service";
 import { EventDetailService } from "./../../../projects/event-library/src/lib/events/services/event-detail/event-detail.service";
+//import { EventFilterService } from './../../../projects/event-library/src/lib/events/services/event-filters/event-filters.service';
 import { Router, ActivatedRoute } from "@angular/router";
 
 import {
@@ -32,8 +33,7 @@ export class DemoComponent implements OnInit {
   isLoading: boolean = true;
   eventCalender: any;
   events: MyCalendarEvent[];
-  Filterdata :any;
-  calendarEvents :any;
+
 
   p: number = 1;
   collection: any[];
@@ -110,8 +110,6 @@ export class DemoComponent implements OnInit {
         this.eventItem = data.result.event;
         this.tab = "detail";
         this.isLoading = false;
-
-        console.log(this.eventItem);
       },
       (err: any) => {
         console.log("err = ", err);

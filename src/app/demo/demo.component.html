@@ -15,8 +15,7 @@
 </div>
 
 <div *ngIf="tab == 'list'">
-    <sb-event-list [list]="eventList" [toSort]=true [myEvents]="myEvents" (eventDetailData)="navToEventDetail($event)"></sb-event-list>
-</div>
+    <sb-event-list [list]="eventList" [toSort]=true [myEvents]="myEvents" (eventDetailData)="navToEventDetail($event)"></sb-event-list></div>
 <div *ngIf="tab == 'detail'">
     <sb-cover-event-detail [eventDetailItem]="eventItem" [userData]="userId"></sb-cover-event-detail>
     <sb-join-event-button [eventDetailItem]="eventItem" [userData]="userId" [canUnenroll]="true"></sb-join-event-button>

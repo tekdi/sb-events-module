@@ -66,8 +66,5 @@ export class EventFilterComponent implements OnInit, OnChanges {
   valueChanges($event) {
    this.filterSelectedValues  = $event;
   }
-
-onQueryEnter($event)
-  {
-  }
+  onQueryEnter(){}
 }
