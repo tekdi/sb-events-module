@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { SuiSidebarModule, SidebarDirection, SidebarTransition } from "./internal";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmpzIiwic291cmNlUm9vdCI6Im5nOi8vbmcyLXNlbWFudGljLXVpLyIsInNvdXJjZXMiOlsibW9kdWxlcy9zaWRlYmFyL3B1YmxpYy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsT0FBTyxFQUNILGdCQUFnQixFQUNoQixnQkFBZ0IsRUFDaEIsaUJBQWlCLEVBQ3BCLE1BQU0sWUFBWSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHtcbiAgICBTdWlTaWRlYmFyTW9kdWxlLFxuICAgIFNpZGViYXJEaXJlY3Rpb24sXG4gICAgU2lkZWJhclRyYW5zaXRpb25cbn0gZnJvbSBcIi4vaW50ZXJuYWxcIjtcbiJdfQ==

@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { SuiAccordionPanel } from "./components/accordion-panel";
+export { SuiAccordion } from "./components/accordion";
+export { SuiAccordionService } from "./services/accordion.service";
+export { SuiAccordionModule } from "./accordion.module";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW50ZXJuYWwuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZzItc2VtYW50aWMtdWkvIiwic291cmNlcyI6WyJtb2R1bGVzL2FjY29yZGlvbi9pbnRlcm5hbC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBQUEsa0NBQWMsOEJBQThCLENBQUM7QUFDN0MsNkJBQWMsd0JBQXdCLENBQUM7QUFFdkMsb0NBQWMsOEJBQThCLENBQUM7QUFFN0MsbUNBQWMsb0JBQW9CLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgKiBmcm9tIFwiLi9jb21wb25lbnRzL2FjY29yZGlvbi1wYW5lbFwiO1xuZXhwb3J0ICogZnJvbSBcIi4vY29tcG9uZW50cy9hY2NvcmRpb25cIjtcblxuZXhwb3J0ICogZnJvbSBcIi4vc2VydmljZXMvYWNjb3JkaW9uLnNlcnZpY2VcIjtcblxuZXhwb3J0ICogZnJvbSBcIi4vYWNjb3JkaW9uLm1vZHVsZVwiO1xuIl19

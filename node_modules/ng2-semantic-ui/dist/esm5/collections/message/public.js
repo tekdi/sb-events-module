@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { SuiMessageModule } from "./internal";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmpzIiwic291cmNlUm9vdCI6Im5nOi8vbmcyLXNlbWFudGljLXVpLyIsInNvdXJjZXMiOlsiY29sbGVjdGlvbnMvbWVzc2FnZS9wdWJsaWMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFDSCxnQkFBZ0IsRUFFbkIsTUFBTSxZQUFZLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQge1xuICAgIFN1aU1lc3NhZ2VNb2R1bGUsXG4gICAgSU1lc3NhZ2Vcbn0gZnJvbSBcIi4vaW50ZXJuYWxcIjtcbiJdfQ==

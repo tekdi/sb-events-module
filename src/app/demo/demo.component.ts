@@ -2,8 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { EventListService } from "../../../projects/event-library/src/lib/events/services/event-list/event-list.service";
 import { EventCreateService } from "../../../projects/event-library/src/lib/events/services/event-create/event-create.service";
 import { EventDetailService } from "./../../../projects/event-library/src/lib/events/services/event-detail/event-detail.service";
-//import { EventFilterService } from './../../../projects/event-library/src/lib/events/services/event-filters/event-filters.service';
+import { EventFilterService } from './../../../projects/event-library/src/lib/events/services/event-filters/event-filters.service';
 import { Router, ActivatedRoute } from "@angular/router";
+import { SbToastService } from '../../../projects/event-library/src/lib/events/services/iziToast/izitoast.service';
 
 import {
   CalendarEvent,
@@ -34,18 +35,23 @@ export class DemoComponent implements OnInit {
   events: MyCalendarEvent[];
   p: number = 1;
   collection: any[];
+  Filterdata :any;
+  calendarEvents :any;
 
   constructor(
     private eventListService: EventListService,
     private eventCreateService: EventCreateService,
     private eventDetailService: EventDetailService,
-    private router: Router
+    private router: Router,
+    private eventFilterService: EventFilterService,
+    private sbToastService: SbToastService
   ) { }
 
   ngOnInit() {
     this.showEventListPage();
     this.showEventCreatePage();
     this.showCalenderEvent();
+    this.showFilters();
   }
 
   /**
@@ -126,5 +132,89 @@ export class DemoComponent implements OnInit {
         identifier: "do_11322182566085427211",
       }));
     });
+  }
+
+  showFilters() {
+    this.eventFilterService.getFilterFormConfig().subscribe((data: any) => {
+      this.filterConfig = data.result['form'].data.fields;
+      this.isLoading = false;
+    },
+    (err: any) => {
+      console.log('err = ', err);
+    });
+  }
+
+  getSearchData(event)
+  {
+    let filters ={
+      "status":[],
+      "objectType": "Event"
+    };
+    this.eventFilterService.getfilterSeachData(filters,event).subscribe((data) => {
+    if (data.responseCode == "OK") 
+      {
+        this.eventList = data.result.Event;
+        this.calendarEvents = data.result.Event;
+      
+        this.events = this.calendarEvents.map(obj => ({
+          start: new Date(obj.startDate),
+          title: obj.name,
+          starttime: obj.startTime,
+          end: new Date(obj.endDate),
+          color: colors.red,
+          cssClass: obj.color,
+          status: obj.status,
+          onlineProvider: obj.onlineProvider,
+          audience: obj.audience,
+          owner: obj.owner,
+          identifier:obj.identifier,  
+        }));
+      }
+    }, (err) => {
+      this.sbToastService.showIziToastMsg(err.error.result.messages[0], 'error');
+    });
+  }
+
+  getFilteredData(event)
+  {
+    if(event.filtersSelected.eventType)
+    {
+      this.Filterdata ={
+        "status":[],
+        "eventType" :event.filtersSelected.eventType,
+        "objectType": "Event"
+      };
+    }
+    else
+    {
+      this.Filterdata ={
+        "status":[],
+        "objectType": "Event"
+      };
+    }
+    let query="";
+    this.eventFilterService.getfilterSeachData(this.Filterdata,query).subscribe((data) => {
+      if (data.responseCode == "OK") 
+        {
+          this.eventList = data.result.Event;
+
+          // Calendar events
+          this.events = this.eventList.map(obj => ({
+          start: new Date(obj.startDate),
+          title: obj.name,
+          starttime: obj.startTime,
+          end: new Date(obj.endDate),
+          color: colors.red,
+          cssClass: obj.color,
+          status: obj.status,
+          onlineProvider: obj.onlineProvider,
+          audience: obj.audience,
+          owner: obj.owner,
+          identifier:obj.identifier,
+          }));
+        }
+      }, (err) => {
+        this.sbToastService.showIziToastMsg(err.error.result.messages[0], 'error');
+      });
   }
 }

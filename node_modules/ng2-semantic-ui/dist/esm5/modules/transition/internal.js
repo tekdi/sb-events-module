@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { TransitionController } from "./classes/transition-controller";
+export { TransitionDirection, Transition } from "./classes/transition";
+export { SuiTransition } from "./directives/transition";
+export { SuiTransitionModule } from "./transition.module";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW50ZXJuYWwuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZzItc2VtYW50aWMtdWkvIiwic291cmNlcyI6WyJtb2R1bGVzL3RyYW5zaXRpb24vaW50ZXJuYWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLHFDQUFjLGlDQUFpQyxDQUFDO0FBQ2hELGdEQUFjLHNCQUFzQixDQUFDO0FBRXJDLDhCQUFjLHlCQUF5QixDQUFDO0FBRXhDLG9DQUFjLHFCQUFxQixDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0ICogZnJvbSBcIi4vY2xhc3Nlcy90cmFuc2l0aW9uLWNvbnRyb2xsZXJcIjtcbmV4cG9ydCAqIGZyb20gXCIuL2NsYXNzZXMvdHJhbnNpdGlvblwiO1xuXG5leHBvcnQgKiBmcm9tIFwiLi9kaXJlY3RpdmVzL3RyYW5zaXRpb25cIjtcblxuZXhwb3J0ICogZnJvbSBcIi4vdHJhbnNpdGlvbi5tb2R1bGVcIjtcbiJdfQ==

@@ -1,0 +1,9 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+// This file exports all of the other interfaces.
+export { SuiLocalizationService } from "./services/localization.service";
+export { SuiLocalizationModule } from "./localization.module";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW50ZXJuYWwuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9uZzItc2VtYW50aWMtdWkvIiwic291cmNlcyI6WyJiZWhhdmlvcnMvbG9jYWxpemF0aW9uL2ludGVybmFsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7O0FBRUEsdUNBQWMsaUNBQWlDLENBQUM7QUFDaEQsc0NBQWMsdUJBQXVCLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyIvLyBUaGlzIGZpbGUgZXhwb3J0cyBhbGwgb2YgdGhlIG90aGVyIGludGVyZmFjZXMuXG5leHBvcnQgKiBmcm9tIFwiLi9sb2NhbGVzL2ludGVyZmFjZXMvdmFsdWVzXCI7XG5leHBvcnQgKiBmcm9tIFwiLi9zZXJ2aWNlcy9sb2NhbGl6YXRpb24uc2VydmljZVwiO1xuZXhwb3J0ICogZnJvbSBcIi4vbG9jYWxpemF0aW9uLm1vZHVsZVwiO1xuIl19

@@ -1,0 +1,7 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
+ */
+export { SuiDropdownModule, DropdownAutoCloseType } from "./internal";
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmpzIiwic291cmNlUm9vdCI6Im5nOi8vbmcyLXNlbWFudGljLXVpLyIsInNvdXJjZXMiOlsibW9kdWxlcy9kcm9wZG93bi9wdWJsaWMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQUFBLE9BQU8sRUFDSCxpQkFBaUIsRUFDakIscUJBQXFCLEVBQ3hCLE1BQU0sWUFBWSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IHtcbiAgICBTdWlEcm9wZG93bk1vZHVsZSxcbiAgICBEcm9wZG93bkF1dG9DbG9zZVR5cGVcbn0gZnJvbSBcIi4vaW50ZXJuYWxcIjtcbiJdfQ==
