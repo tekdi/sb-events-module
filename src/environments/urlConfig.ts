@@ -14,7 +14,7 @@
     detail :  "assets/api/event-detail.json",
     // detail :  "https://igot-sunbird.idc.tarento.com/api/event/v4/read/",
     list : "assets/api/eventlist.json",
-    create: "https://igot-sunbird.idc.tarento.com/api/event/v4/create",
+    create: "/event/v4/create",
     update: "https://igot-sunbird.idc.tarento.com/api/event/v4/update",
     formConfig : "assets/api/event-create.json",
     enrolllist : "assets/api/enroll-list.json",
