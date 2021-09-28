@@ -14,5 +14,12 @@
             "^/api": ""
         },
         "changeOrigin": true
+    },
+
+    "/v3/": {
+        "target": "https://b685-103-110-241-42.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
     }
 }

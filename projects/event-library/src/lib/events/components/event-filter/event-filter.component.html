@@ -4,7 +4,7 @@
             <div class="sb-search-box  search-container small no-btn">
                 <div class="input-div relative">
                     <i class="search icon"></i>
-                    <input class="sb-search-input " [(ngModel)]="searchQuery" type="text" (keyup.enter)="onQueryEnter();" placeholder="Search Event" />
+                    <input class="sb-search-input " [(ngModel)]="searchQuery" type="text" (keyup.enter)="onQueryEnter($event.target.value);" placeholder="Search Event" />
                 </div>
                 <button class="sb-btn sb-btn-normal">
             {{'search' | translate}}
