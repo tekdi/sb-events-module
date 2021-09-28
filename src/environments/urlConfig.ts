@@ -25,6 +25,5 @@
     ImageSearchApi :  "assets/api/search-images.json",
     EditModeApi :  "assets/api/editmode.json",
     createImage:"content/v3/create",
-    calenderevent:"assets/api/eventlist_new.json",
-    search:"/v3/search",
+    calenderevent:"assets/api/eventlist_new.json"
 };

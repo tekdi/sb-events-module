@@ -11,9 +11,7 @@ export class EventFilterComponent implements OnInit, OnChanges {
 
   @Input() filterValues: any;
   @Input() filterOpenStatus: boolean;
-  //@Output() filterChangeEvent: EventEmitter<any> = new EventEmitter();
-  @Output() filterChangeEvent = new EventEmitter();
-  @Output() filterSearchData: EventEmitter<any> = new EventEmitter();
+  @Output() filterChangeEvent: EventEmitter<any> = new EventEmitter();
 
   public searchFilterFormConfig: any;
   @Input() filterConfig: any;
@@ -44,8 +42,7 @@ export class EventFilterComponent implements OnInit, OnChanges {
   }
 
   resetFilter() {
-    this.filterSelectedValues = [];
-    this.emitApplyFilter();
+    this.filterSelectedValues =[];
   }
 
   applyFilter() {
@@ -72,6 +69,5 @@ export class EventFilterComponent implements OnInit, OnChanges {
 
 onQueryEnter($event)
   {
-    this.filterSearchData.emit($event);
   }
 }
