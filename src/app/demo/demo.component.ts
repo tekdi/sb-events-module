@@ -5,6 +5,7 @@ import { EventDetailService } from "./../../../projects/event-library/src/lib/ev
 import { EventFilterService } from './../../../projects/event-library/src/lib/events/services/event-filters/event-filters.service';
 import { Router, ActivatedRoute } from "@angular/router";
 import { SbToastService } from '../../../projects/event-library/src/lib/events/services/iziToast/izitoast.service';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 
 import {
   CalendarEvent,
@@ -161,9 +162,17 @@ showFilters() {
       "status":[],
       "objectType": "Event"
     };
+
+    if (this.tab == "list")
+    {
+      this.eventList="";
+      this.isLoading = true;
+    }
+
     this.eventFilterService.getfilterSeachData(filters,event).subscribe((data) => {
     if (data.responseCode == "OK") 
       {
+        this.isLoading = false;
         this.eventList = data.result.Event;
         this.calendarEvents = data.result.Event;
       
@@ -180,9 +189,11 @@ showFilters() {
           owner: obj.owner,
           identifier:obj.identifier,  
         }));
+        
       }
     }, (err) => {
       this.sbToastService.showIziToastMsg(err.error.result.messages[0], 'error');
+      this.isLoading = false;
     });
   }
 
@@ -204,9 +215,17 @@ showFilters() {
       };
     }
     let query="";
+
+    if (this.tab == "list")
+    {
+      this.eventList="";
+      this.isLoading = true;
+    }
+    
     this.eventFilterService.getfilterSeachData(this.Filterdata,query).subscribe((data) => {
       if (data.responseCode == "OK") 
         {
+          this.isLoading = false;
           this.eventList = data.result.Event;
 
           // Calendar events
@@ -225,6 +244,7 @@ showFilters() {
           }));
         }
       }, (err) => {
+        this.isLoading = false;
         this.sbToastService.showIziToastMsg(err.error.result.messages[0], 'error');
       });
   }
