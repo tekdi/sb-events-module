@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --proxy-config",
+        "start": "ng serve --proxy-config proxy.config.json",
         "build": "ng build event-library && npm run copy:assets",
         "install-dependencies:build-lib": "npm i && npm run build-lib",
         "build_lib": "ng build event-library && npm run copy:assets",
@@ -52,7 +52,8 @@
         "jquery": "^3.5.1",
         "ng2-semantic-ui": "github:project-sunbird/ng2-semantic-ui",
         "ngx-slick-carousel": "^0.5.1",
-        "slick-carousel": "^1.8.1"
+        "slick-carousel": "^1.8.1",
+        "@project-sunbird/client-services": "4.2.3"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.803.29",

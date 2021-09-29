@@ -63,6 +63,7 @@ select,
     border-radius: 0.28571429rem;
     font-size: 0.785rem !important;
     font-weight: 500 !important;
+    width: 100% !important;
     //color: #b3b1b1;
 }
 
@@ -136,7 +137,7 @@ label {
 
 .sb-textarea-container {
     .sb-textarea {
-        height: 2.9rem;
+        // height: 2.9rem;
         padding-top: 0.5rem !important;
     }
     label {
@@ -221,4 +222,12 @@ sb-icon-dropdown {
 .w-96 {
     width: 96%;
     max-width: 96%
+}
+
+.required {
+    color: red;
+}
+.ui.modal{
+    display: block !important;
+    max-width: 45rem;
 }

@@ -24,34 +24,6 @@ export class EventCreateService {
     return this.dataService.get(req);
   }
 
-  
-  /**
- * For post event data
- */
-   saveEvent(formData) {
-   
-    const requestBody = {
-      request: {
-        event: formData
-      }
-    };
-
-    const option = {
-       url: this.userConfigService.getConfigUrl().create,
-      data: requestBody,
-      header: { 'Content-Type' : 'application/json'}
-    };
-
-    return this.dataService.post(option);
-    
-    // .subscribe((data)=>{
-      
-    //   console.log({data});
-    // });
-
-    this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
-  }
-
   /**
  * For post event data
  */
@@ -70,15 +42,11 @@ export class EventCreateService {
     };
 
     return this.dataService.post(option);
-    
-    // .subscribe((data)=>{
-      
+    // .subscribe((data)=>{     
     //   console.log({data});
     // });
 
-    this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
   }
-
 
   updateEvent(formData) {
    
@@ -93,8 +61,8 @@ export class EventCreateService {
       data: requestBody,
       header: { 'Content-Type' : 'application/json'}
     };
-    return this.dataService.post(option);
-    // return this.dataService.patch(option);
+return this.dataService.patch(option);
+    
 
    // this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
   }
