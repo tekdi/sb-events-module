@@ -14,5 +14,35 @@
             "^/api": ""
         },
         "changeOrigin": true
+    },
+     "/event/": {
+        "target": "https://26bc-103-110-241-107.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
+    },
+    "/v4/": {
+        "target": "https://26bc-103-110-241-107.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
+    },
+    "/v3/": {
+        "target": "https://d2de-103-110-241-107.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
+    },
+    "/v1/": {
+        "target": "https://0032-103-110-241-107.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
+    },
+    "/v2/": {
+        "target": "https://0032-103-110-241-107.ngrok.io/",
+        "changeOrigin": true,
+        "logLevel": "debug",
+        "secure": false
     }
 }
