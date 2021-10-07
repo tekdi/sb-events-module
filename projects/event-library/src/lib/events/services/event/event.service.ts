@@ -23,58 +23,122 @@ export class EventService {
   /**
    * To user enrolled event list
    */
-  getEnrollEvents(eventId, userId) {
-
+  getEnrollEvents(cId, userId){
     const requestBody = {
       request: {
-        "courseId": eventId,
         "userId": userId,
-        "fixedBatchId": "event_batch_id"
       }
     };
 
-    const req = {
-      url: this.userConfigService.getConfigUrl().enrollListApi,
-      data: requestBody
+    const option = {
+      url: this.userConfigService.getConfigUrl().enrollUserEventList,
+      data: requestBody,
+      header: { 'Content-Type' : 'application/json'}
     };
 
-    return this.dataService.get(req);
+    return this.dataService.post(option); 
   }
 
   /**
    * For Enroll/Unenroll to the event
    */
-  enrollToEventPost(action, cId, uId) {
+  enrollToEventPost(action, cId, uId, batchDetails) {
     const requestBody = {
       request: {
         "courseId": cId,
         "userId": uId,
-        "fixedBatchId": "event_batch_id"
+        "batchId": batchDetails.batchId
       }
     };
 
-    const req = {
-      url: this.userConfigService.getConfigUrl().enrollApi,
-      data: requestBody
+    if (action == 'enroll')
+    {
+      const req = {
+        url: this.userConfigService.getConfigUrl().enrollApi,
+        data: requestBody
+      };
 
+      return this.dataService.post(req);
+    }
+    else if (action == 'unenroll')
+    {
+      const req = {
+        url: this.userConfigService.getConfigUrl().unenrollApi,
+        data: requestBody
+      };
+
+      return this.dataService.post(req);
+    }
+  }
+
+ /**
+  * Get a BBB Moderator meeting link
+  * @param EventId 
+  * @returns BBB Moderator meeting link
+  */
+  getBBBURlModerator(EventId)
+  {
+      const req = {
+        url: this.userConfigService.getConfigUrl().BBBGetUrlModerator + '/' + EventId
+      };
+
+      return this.dataService.get(req);
+  }
+
+ /**
+  * Get BBB Attendee meeting link
+  * @param EventId 
+  * @returns BBB Attendee meeting link
+  */
+  getBBBURlAttendee(EventId)
+  {
+      const req = {
+        url: this.userConfigService.getConfigUrl().BBBGetUrlAttendee + '/' + EventId
+      };
+
+      return this.dataService.get(req);
+  }
+
+   /**
+    * Serch / get batchs
+    * @param filterval array of filter values 
+    */
+   getBatches(filterval)
+   {
+      const requestBody = {
+      "request": {
+          "filters":filterval,
+          "sort_by": {
+              "createdDate": "desc"
+          }
+        }
+      }
+
+    const option = {
+      url: this.userConfigService.getConfigUrl().batchlist,
+      data: requestBody,
+      header: { 'Content-Type' : 'application/json'}
     };
 
-    return this.dataService.post(req).subscribe((data) => {
-      console.log("Result = ", data);
-    });
-  }
+    return this.dataService.post(option); 
+   }
 
   /**
-   * Get the Big Blue Button URL
+   * Create batch for event
    */
-  getBBBURl(EventId,uId){
-    const req = {
-      url: this.userConfigService.getConfigUrl().BBBGetUrl + '/' + EventId
+  createBatch(requestValue){
+    const requestBody = {
+      "request": requestValue
+      }
+
+    const option = {
+      url: this.userConfigService.getConfigUrl().createBatch,
+      data: requestBody,
+      header: { 'Content-Type' : 'application/json'}
     };
 
-    return this.dataService.get(req);
+    return this.dataService.post(option); 
   }
-
 
   convertDate(eventDate) {
     var date = new Date(eventDate),
@@ -120,7 +184,7 @@ export class EventService {
 
     return event;
   }
-  
+
 }
 
 

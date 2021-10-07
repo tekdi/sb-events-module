@@ -1,15 +1,25 @@
 <div class="p-40">
 
-    <h1 class="mt-20 mb-20">{{labelMessages.lbl.createnewevent}}</h1>
+    <h1 class="mt-20 mb-20">{{'createnewevent' | translate}}</h1>
     <ng-container *ngIf="isNew;then New; else Edit">
     </ng-container>
     <ng-template #New>
-        <sb-dynamic-form *ngIf="formFieldProperties" class="label-1" [config]="formFieldProperties" (valueChanges)="valueChanges($event)">
-        </sb-dynamic-form>
+        <div *ngIf="formFieldProperties != undefined && formFieldProperties?.length > 0" > 
+            <sb-dynamic-form 
+                class="label-1" 
+                [config]="formFieldProperties" 
+                (valueChanges)="valueChanges($event)">
+             </sb-dynamic-form>
+        </div>
     </ng-template>
     <ng-template #Edit>
-        <sb-dynamic-form *ngIf="formFieldData" class="label-1" [config]="formFieldData" (valueChanges)="valueChanges($event)">
-        </sb-dynamic-form>
+        <div *ngIf="formFieldData != undefined && formFieldData?.length > 0">
+            <sb-dynamic-form
+                class="label-1" 
+                [config]="formFieldData" 
+                (valueChanges)="valueChanges($event)">
+            </sb-dynamic-form>
+        </div>
     </ng-template>
 
     <form class="ui form" [formGroup]="customFields">

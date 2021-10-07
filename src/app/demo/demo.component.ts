@@ -68,9 +68,14 @@ export class DemoComponent implements OnInit {
   /**
    * For subscibe click action on event card
    */
-  navToEventDetail(res) {
-    this.eventItem = res;
-    this.tab = "detail";
+   navToEventDetail(event){
+    this.router.navigate(['/play/event-detail'], {
+      queryParams: {
+        identifier: event.identifier
+      }
+    });
+
+    console.log('Demo Component - ', event.identifier);
   }
 
   Openview(view)

@@ -51,7 +51,7 @@
                         "label": "Event Type",
                         "description": "Type of the event",
                         "editable": true,
-                        "default": "Online",
+                        "default": "",
                         "placeholder": "Select Event Type",
                         "inputType": "select",
                         "required": false,
@@ -144,7 +144,7 @@
                         "inputType": "select",
                         "required": false,
                         "displayProperty": "Editable",
-                        "range": ["Zoom", "GoToMeeting", "Google Meet", "Jitsi"],
+                        "range": ["Zoom", "GoToMeeting", "Google Meet", "Jitsi", "BigBlueButton"],
                         "visible": true,
                         "renderingHints": {
                             "semanticColumnWidth": "twelve"

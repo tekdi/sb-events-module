@@ -49,7 +49,7 @@ export class EventCreateService {
     //   console.log({data});
     // });
 
-    this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
+    // this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
   }
 
   /**
@@ -76,9 +76,8 @@ export class EventCreateService {
     //   console.log({data});
     // });
 
-    this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
+    // this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
   }
-
 
   updateEvent(formData) {
    
@@ -93,8 +92,8 @@ export class EventCreateService {
       data: requestBody,
       header: { 'Content-Type' : 'application/json'}
     };
-    return this.dataService.post(option);
-    // return this.dataService.patch(option);
+
+    return this.dataService.patch(option);
 
    // this.sbToastService.showIziToastMsg("New Event Created Successfully", 'success');
   }

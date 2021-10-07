@@ -19,13 +19,11 @@ export class EventDetailService {
    */
   getEvent(identifier) {
     const req = {
-      url: this.userConfigService.getConfigUrl().detail
-      //url: this.userConfigService.getConfigUrl().detail  + identifier
+      url: this.userConfigService.getConfigUrl().detail + identifier
     };
 
     return this.dataService.get(req);
   }
-
 
   /**
    * For enroll/unenroll user

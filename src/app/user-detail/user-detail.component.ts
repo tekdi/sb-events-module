@@ -12,7 +12,7 @@ export class UserDetailComponent implements OnInit {
 
   eventItem: any;
   eventList: any;
-  userId: any = "123";
+  userId: any = "999";
   constructor(private eventDetailService: EventDetailService,
     private activatedRoute : ActivatedRoute
   

@@ -18,6 +18,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DemoComponent } from './demo/demo.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 import { EnrollUsersComponent } from './enroll-users/enroll-users.component';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { EnrollUsersComponent } from './enroll-users/enroll-users.component';
     UserDetailComponent,
     UserFomComponent,
     DemoComponent,
+    EventDetailComponent,
     EnrollUsersComponent
   ],
   imports: [

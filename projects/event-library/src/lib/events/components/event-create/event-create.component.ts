@@ -1,14 +1,17 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventCreateService } from './../../services/event-create/event-create.service';
 import { EventDetailService } from './../../services/event-detail/event-detail.service';
+import { EventService } from '../../services/event/event.service'
 import{ labelMessages } from './../labels'
 import { Router } from '@angular/router'
 import { Location } from '@angular/common'
 import { SbToastService } from '../../services/iziToast/izitoast.service';
+import { UserConfigService } from '../../services/userConfig/user-config.service';
 import { ImageSearchService } from '../../services/image-search/image-search.service';
+import { TimezoneCal } from '../../services/timezone/timezone.service';
 import * as _ from 'lodash-es';
 @Component({
   selector: 'sb-event-create',
@@ -17,6 +20,8 @@ import * as _ from 'lodash-es';
   encapsulation: ViewEncapsulation.None
 })
 export class EventCreateComponent implements OnInit {
+
+  @Output() navAfterSave = new EventEmitter();
 
   labelMessages = labelMessages;
   @Input() formFieldProperties: any;
@@ -37,6 +42,8 @@ export class EventCreateComponent implements OnInit {
   formFieldData: any;
   FormData: any;
   isNew:boolean= true;
+  eventValue: any;
+  offset = this.timezoneCal.getTimeOffset();
 
   public showAppIcon = true;
   public appIconConfig = {
@@ -60,18 +67,21 @@ export class EventCreateComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private eventCreateService: EventCreateService,
     private eventDetailService: EventDetailService,
+    private eventService: EventService,
     private router: Router,
     private location: Location,
     private sbToastService: SbToastService,
     private formBuilder: FormBuilder,
-    private imageSearchService : ImageSearchService) {
+    private userConfigService: UserConfigService,
+    private imageSearchService : ImageSearchService,
+    private timezoneCal: TimezoneCal) {
     }
     
     customFields = this.formBuilder.group({
       startDate:[] = this.todayDate,
       endDate:[] = this.todayDate,
-      startTime:[]= this.today.getHours() + ":" + this.today.getMinutes(),
-      endTime: []  = (this.today.getHours() + 1) + ":" + this.today.getMinutes(),
+      startTime:[] = (('0' + (this.today.getHours() + 1))).slice(-2) + ":" + ('0' + this.today.getMinutes()).slice(-2) + ":" + ('0' + this.today.getSeconds()).slice(-2),
+      endTime:[] = (('0' + (this.today.getHours() + 2))).slice(-2) + ":" + ('0' + this.today.getMinutes()).slice(-2) + ":" + ('0' + this.today.getSeconds()).slice(-2),
       registrationStartDate: [] = this.todayDate,
       registrationEndDate: [] = this.todayDate,
   
@@ -134,6 +144,15 @@ export class EventCreateComponent implements OnInit {
    */
   postData() {
     this.isSubmitted = true;
+      this.formValues["startDate"] = this.customFields.value.startDate;
+      this.formValues["startTime"] = this.customFields.value.startTime + this.offset;
+      this.formValues["endDate"] = this.customFields.value.endDate;
+      this.formValues["endTime"] = this.customFields.value.endTime + this.offset;
+      this.formValues["registrationStartDate"] = this.customFields.value.registrationStartDate;
+      this.formValues["registrationEndDate"] = this.customFields.value.registrationEndDate;  
+      this.formValues['owner'] = this.userId;
+
+    console.log(this.formValues);
     if (this.formValues == undefined) {
       this.sbToastService.showIziToastMsg("Please enter event name", 'warning');
     } else if (this.formValues.name == undefined || this.formValues.name.trim() == "") {
@@ -156,18 +175,93 @@ export class EventCreateComponent implements OnInit {
       this.sbToastService.showIziToastMsg("Registration end date should be greater than start date", 'warning');
     } 
     else {
-      this.formValues["startDate"] = this.customFields.value.startDate;
-      this.formValues["startTime"] = this.customFields.value.startTime;
-      this.formValues["endDate"] = this.customFields.value.endDate;
-      this.formValues["endTime"] = this.customFields.value.endTime;
-      this.formValues["registrationStartDate"] = this.customFields.value.registrationStartDate;
-      this.formValues["registrationEndDate"] = this.customFields.value.registrationEndDate;  
      
       if( this.queryParams.identifier) {
         this.formValues["identifier"] =  this.queryParams.identifier;
       }
-        this.eventCreateService.saveEvent(this.formValues);
+      // this.eventCreateService.saveEvent(this.formValues);
+
+        this.eventCreateService.createEvent(this.formValues).subscribe((data) => {
+          if (data.responseCode == "OK") 
+          {
+            this.dataSubmitted(data, 'create');
+          }
+        }, (err: any) => {
+          console.log( "Errr, " ,err);
+          this.sbToastService.showIziToastMsg(err.message, 'error');
+        });
     }
+  }
+
+  dataSubmitted(data, task) {
+      this.eventCreateService.publishEvent(data.result.identifier).subscribe((res) => {
+        
+        if (task == 'create')
+        {
+          this.sbToastService.showIziToastMsg("Event Created Successfully", 'success');
+        }
+        else
+        {
+          this.sbToastService.showIziToastMsg("Event updated Successfully", 'success');
+        }
+
+        // Only publish event can able to create batch
+        this.createEventBatch(data);
+        
+        this.navAfterSave.emit(data);
+      });
+  }
+
+  /**
+   * NOTE: Once the event is created, the batch will be created automatically.
+   * Right now the batch is not created after event creating, so we are implementing some temporary solution
+   * 
+   * Create event batch 
+   * Here, confirm that one event have only one batch.
+   * @param data array of created event id
+   * @param formValue event form value
+   */
+  createEventBatch(data)
+  {
+      // Check whether Event has batch or not
+      // filter set for serch batch for selected event
+      let filters ={
+          "courseId": data.result.identifier,
+          "enrollmentType": "open"
+       };
+
+      this.eventDetailService.getEvent(data.result.identifier).subscribe((response: any) => {
+        this.eventValue = response.result.event;
+
+        // request value for create batch for selected event
+        let createBatchRequestValue = {
+          "courseId": data.result.identifier,
+          "name": "Batch for event - " + data.result.identifier,
+          "description": "Batch for event - " + data.result.identifier,
+          "enrollmentType": "open",
+          "startDate": this.eventValue.startDate,
+          "enddate": this.eventValue.endDate,
+          "enrollmentEndDate":this.eventValue.registrationEndDate,
+          "createdBy" : this.eventValue.owner
+        }
+
+        this.eventService.getBatches(filters).subscribe((res) => {
+          if (res.responseCode == "OK") 
+          {
+              if (res.result.response.count == 0)
+              {
+                // If batch not created then create the batch for event
+                this.eventService.createBatch(createBatchRequestValue).subscribe((createRes) => {
+                  console.log('Batch Created :: ', createRes);
+                });
+              }
+              else
+              {
+                console.log("Batch is already created to this event");
+              }
+          }
+        });
+      });
   }
 
   Cancel()

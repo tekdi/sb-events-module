@@ -16,12 +16,13 @@ export class JoinEventComponent implements OnInit {
 
   todayDateTime: any;
   isUserAbleToJoin: boolean = false;
-  isEnrolled: boolean = true;
+  isEnrolled: boolean = false;
   today: any;
   todayDate: any;
   todayTime: any;
   startInMinutes: any;
   items: any;
+  warningMessage: any;
 
   constructor(
     private eventService: EventService,
@@ -67,7 +68,7 @@ export class JoinEventComponent implements OnInit {
     */
   async isEnrollEvent() {
     this.eventService.getEnrollEvents(this.eventDetailItem.identifier, this.userData).subscribe((data) => {
-      this.items = data.result.content;
+      this.items = data.result.courses;
 
       this.items.find((o, i) => {
         if (o.courseId === this.eventDetailItem.identifier) {
@@ -78,31 +79,83 @@ export class JoinEventComponent implements OnInit {
     });
   }
 
-    /**
+  /**
    * Enroll/Unenroll event
    * 
    * @param action enroll/unenroll 
    */
      enrollToEvent(action) {
-      this.eventService.enrollToEventPost(action, this.eventDetailItem.code, this.userData);
+       // Check whether Event has batch or not
+      // filter set for serch batch for selected event
+      let filters ={
+          "courseId": this.eventDetailItem.identifier,
+          "enrollmentType": "open"
+       };
+
+      this.eventService.getBatches(filters).subscribe((res) => {
+          if (res.responseCode == "OK") 
+          {
+              if (res.result.response.count == 0)
+              {
+                // If batch not created then return the mssage
+                this.warningMessage = 'Unable to enroll/de-enroll to this event. Batch is not created to that event OR event not publish yet.'
+                console.log(this.warningMessage);
+                this.isEnrolled = false; 
+              }
+              else
+              {
+                let batchDetails = res.result.response.content[0];
+                this.eventService.enrollToEventPost(action, 
+                                                    this.eventDetailItem.identifier, 
+                                                    this.userData, 
+                                                    batchDetails).subscribe((res) => {
+                  if (res.result.response == "SUCCESS")
+                  {
+                    if (action == "enroll")
+                    {
+                      this.isEnrolled = true;
+                    }
+                    else if (action == "unenroll")
+                    {
+                      this.isEnrolled = false;
+                    } 
+                  }
+                });
+              }
+          }
+      });
+      
     }
 
   /**
    * For join event : check the online event Provider link for join
    */
-   checkEventProvider(){
+    checkEventProvider()
+    {
       if (!this.eventDetailItem.onlineProviderData)
       {
         this.openProviderLink(this.eventDetailItem.onlineProviderData);
       } 
       else 
       {
-        this.eventService.getBBBURl(this.eventDetailItem.identifier, this.userData).subscribe((data) => {
-          this.openProviderLink(data.result.event.attendeeMeetingLink);
-        });
+        if (this.userData == this.eventDetailItem.owner)
+        {
+          // return moderatorMeetingLink
+          this.eventService.getBBBURlModerator(this.eventDetailItem.identifier).subscribe((data) => {
+            this.openProviderLink(data.result.event.moderatorMeetingLink);
+          });
+        }
+        else
+        {
+          // return attendeeMeetingLink
+          this.eventService.getBBBURlAttendee(this.eventDetailItem.identifier).subscribe((data) => {
+            this.openProviderLink(data.result.event.attendeeMeetingLink);
+          });
+        }
+        
       }
     }
-
+    
   /**
    * For join attain event
    * 
