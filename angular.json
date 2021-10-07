@@ -90,7 +90,8 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
                         "browserTarget": "EventLibrary:build",
-                        "proxyConfig": "proxy.config.json"
+                        "proxyConfig": "proxy.config.json",
+                        "port":4201                       
                     },
                     "configurations": {
                         "production": {

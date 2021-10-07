@@ -11,17 +11,29 @@ export class UserListComponent implements OnInit {
 
   constructor( private eventListService: EventListService,
     private router: Router) { }
-  eventList: any;
+    eventList: any;
+    Filterdata:any;
+    isLoading: boolean;
+
 
   ngOnInit() {
     this.showEventListPage();
 
   }
-  showEventListPage(){
-    this.eventListService.getEventList().subscribe((data:any)=>{
-       console.log("data = ", data);
-       this.eventList = data.result.content;
-      })
+
+  /**
+   * For get List of events
+   */
+  showEventListPage()
+  {
+    this.Filterdata ={
+      "status":[],
+      "objectType": "Event"
+    };
+    this.eventListService.getEventList(this.Filterdata).subscribe((data:any)=>{
+      this.eventList = data.result.Event;
+      this.isLoading = false;
+    })
   }
 
   navToEventDetail(res){

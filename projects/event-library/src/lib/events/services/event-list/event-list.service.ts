@@ -12,16 +12,25 @@ export class EventListService {
     private dataService: DataService) {
   }
 
-
   /**
    * For get event list 
    */
-  getEventList() {
-    const req = {
-      url: this.userConfigService.getConfigUrl().list
-    };
+   getEventList(filterValue,query?:any)
+   {
+      const requestBody = {
+        "request": {
+          "filters":filterValue,
+          "query":query,
+          }
+        }
 
-    return this.dataService.get(req);
+      const option = {
+        url: this.userConfigService.getConfigUrl().search,
+        data: requestBody,
+        header: { 'Content-Type' : 'application/json'}
+      };
+      
+      return this.dataService.post(option);
   }
 
   getCalenderlist() {
@@ -47,4 +56,18 @@ export class EventListService {
 
     return this.dataService.get(req);
   }
+
+  /**
+   * For getting filter config
+   */
+    /**
+   * For get event form config 
+   */
+  getFilterFormConfig() {
+    const req = {
+      url: this.userConfigService.getConfigUrl().eventFilterConfigApi
+    };
+    return this.dataService.get(req);
+  }
+  
 }
